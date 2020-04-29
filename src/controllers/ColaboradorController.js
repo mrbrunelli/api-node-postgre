@@ -11,5 +11,17 @@ module.exports = {
                 message: `Erro ao realizar consulta: ${err}`
             })
         }
+    },
+
+    async indexOne(req, res) {
+        try {
+            const response = await db.query(`SELECT * FROM colaborador WHERE idcolaborador = ${req.params.id}`)
+            return res.json(response.rows)
+        } catch (err) {
+            return res.status(400).json({
+                error: true,
+                message: `Erro ao realizar consulta: ${err}`
+            })
+        }
     }
 }
