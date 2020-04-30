@@ -112,7 +112,7 @@ module.exports = {
         } catch (err) {
             return res.status(400).json({
                 error: true,
-                message: `Erro ao cadastrar colaborador: ${err}`
+                message: `Erro ao atualizar colaborador: ${err}`
             })
         }
     },
