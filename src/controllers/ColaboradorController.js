@@ -1,6 +1,6 @@
 /**
  * Arquivo: ColaboradorController.js
- * Descrição: Responsável por gerenciar os colaboradores
+ * Descrição: Responsável por gerenciar os colaboradores (Cadastrar, Listar, Atualizar e Deletar Colaboradores)
  * Data: 24/04/2020
  * Autor: Matheus Ricardo Brunelli
  */
@@ -66,4 +66,39 @@ module.exports = {
             })
         }
     },
+
+    // Atualizar cadastro do colaborador
+    async update(req, res) {
+        const {
+            nome,
+            cpf,
+            email,
+            idfilial,
+            idsituacaousuario
+        } = req.body
+        try {
+            const { rows } = await db.query(
+                "UPDATE colaborador SET nome = $1, cpf = $2, email = $3, idfilial = $4, idsituacaousuario = $5",
+                [nome, cpf, email, idfilial, idsituacaousuario]
+            )
+
+            return res.json({
+                error: false,
+                message: 'Colaborador atualizado com sucesso!',
+                body: {
+                    colaborador: {
+                        nome,
+                        email,
+                        idfilial,
+                        idsituacaousuario
+                    }
+                }
+            })
+        } catch (err) {
+            return res.status(400).json({
+                error: true,
+                message: `Erro ao cadastrar colaborador: ${err}`
+            })
+        }
+    }
 }
