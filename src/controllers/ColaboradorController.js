@@ -9,7 +9,7 @@ const db = require('../config/database')
 
 module.exports = {
     // Listar todos colaboradores
-    async index(req, res) {
+    async listAll(req, res) {
         try {
             const response = await db.query("SELECT * FROM colaborador")
             return res.json(response.rows)
@@ -22,7 +22,7 @@ module.exports = {
     },
 
     // Listar apenas um colaborador, usando id como parâmetro
-    async find(req, res) {
+    async listById(req, res) {
         try {
             const response = await db.query(`SELECT * FROM colaborador WHERE idcolaborador = ${req.params.id}`)
             return res.json(response.rows)

@@ -12,8 +12,8 @@ const routes = express.Router()
 const ColaboradorController = require('./controllers/ColaboradorController')
 
 // Rota para listar colaboradores
-routes.get('/colaborador', ColaboradorController.index)
-routes.get('/colaborador/:id', ColaboradorController.find)
+routes.get('/colaborador', ColaboradorController.listAll)
+routes.get('/colaborador/:id', ColaboradorController.listById)
 routes.post('/colaborador', ColaboradorController.create)
 
 module.exports = routes
