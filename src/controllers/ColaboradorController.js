@@ -25,7 +25,20 @@ module.exports = {
     async listById(req, res) {
         try {
             const response = await db.query(`SELECT * FROM colaborador WHERE idcolaborador = ${req.params.id}`)
+
+            // Verificar se o colaborador foi encontrado
+            if (response.rowCount == 0) {
+                return (
+                    res.status(400).json({
+                        error: true,
+                        message: 'Colaborador não encontrado!',
+                        rows: `Linhas executadas: ${response.rowCount}`
+                    })
+                )
+            }
+
             return res.json(response.rows)
+
         } catch (err) {
             return res.status(400).json({
                 error: true,
@@ -59,6 +72,7 @@ module.exports = {
                     }
                 }
             })
+
         } catch (err) {
             return res.status(400).json({
                 error: true,
@@ -77,7 +91,7 @@ module.exports = {
             idsituacaousuario
         } = req.body
         try {
-            const { rows } = await db.query(
+            await db.query(
                 `UPDATE colaborador SET nome = $1, cpf = $2, email = $3, idfilial = $4, idsituacaousuario = $5 WHERE idcolaborador = ${req.params.id}`,
                 [nome, cpf, email, idfilial, idsituacaousuario]
             )
@@ -94,11 +108,42 @@ module.exports = {
                     }
                 }
             })
+
         } catch (err) {
             return res.status(400).json({
                 error: true,
                 message: `Erro ao cadastrar colaborador: ${err}`
             })
         }
-    }
+    },
+
+    // Deletar colaborador, passando id por parâmetro
+    async delete(req, res, next) {
+        try {
+            const response = await db.query(`DELETE FROM colaborador WHERE idcolaborador = ${req.params.id}`)
+
+            // Verificar se o colaborador foi deletado
+            if (response.rowCount == 0) {
+                return (
+                    res.status(400).json({
+                        error: true,
+                        message: 'Colaborador não encontrado!',
+                        rows: `Linhas executadas: ${response.rowCount}`
+                    }))
+            }
+
+            return res.json({
+                error: false,
+                message: 'Colaborador deletado com sucesso!',
+                rows: `Linhas executadas: ${response.rowCount}`
+            })
+
+        } catch (err) {
+            return res.status(400).json({
+                error: true,
+                message: `Erro ao deletar colaborador: ${err}`,
+                rows: `Linhas executadas: ${response.rowCount}`
+            })
+        }
+    },
 }
