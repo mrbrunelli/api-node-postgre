@@ -11,9 +11,10 @@ const routes = express.Router()
 
 const ColaboradorController = require('./controllers/ColaboradorController')
 
-// Rota para listar colaboradores
+// Rotas Colaborador
 routes.get('/colaborador', ColaboradorController.listAll)
 routes.get('/colaborador/:id', ColaboradorController.listById)
 routes.post('/colaborador', ColaboradorController.create)
+routes.put('/colaborador/:id', ColaboradorController.update)
 
 module.exports = routes

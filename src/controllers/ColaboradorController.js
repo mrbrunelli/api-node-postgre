@@ -78,7 +78,7 @@ module.exports = {
         } = req.body
         try {
             const { rows } = await db.query(
-                "UPDATE colaborador SET nome = $1, cpf = $2, email = $3, idfilial = $4, idsituacaousuario = $5",
+                `UPDATE colaborador SET nome = $1, cpf = $2, email = $3, idfilial = $4, idsituacaousuario = $5 WHERE idcolaborador = ${req.params.id}`,
                 [nome, cpf, email, idfilial, idsituacaousuario]
             )
 
