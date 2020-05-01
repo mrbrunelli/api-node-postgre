@@ -16,7 +16,7 @@ services:
 
     pgadmin:
         image: dpage/pgadmin4
-        container_name: api-pgsql
+        container_name: api-pgadmin
         ports:
             - 80:80
         environment:
