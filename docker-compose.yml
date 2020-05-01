@@ -8,7 +8,7 @@ services:
         ports:
             - 5432:5432
         volumes:
-            - ./bkp/pg:/var/lib/postgresql/data
+            - ./bkp:/var/lib/postgresql/data
         environment:
             - POSTGRES_PASSWORD=postgres
             - POSTGRES_DB=logistica
