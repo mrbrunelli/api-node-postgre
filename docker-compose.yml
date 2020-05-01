@@ -3,12 +3,12 @@ version: "3"
 services:
     db:
         image: postgres:12
-        container_name: logistica-postgres
+        container_name: api-pgsql
         restart: always
         ports:
             - 5432:5432
-        volumes:
-            - ./bkp:/var/lib/postgresql/data
+        #volumes:
+        #- ./bkp:/var/lib/postgresql/data
         environment:
             - POSTGRES_PASSWORD=postgres
             - POSTGRES_DB=logistica
@@ -16,7 +16,7 @@ services:
 
     pgadmin:
         image: dpage/pgadmin4
-        container_name: logistica-pgadmin
+        container_name: api-pgsql
         ports:
             - 80:80
         environment:
