@@ -14,8 +14,8 @@ const ColaboradorController = require('./controllers/ColaboradorController')
 // Rotas Colaborador
 routes.get('/colaborador', ColaboradorController.listAll)
 routes.get('/colaborador/:id', ColaboradorController.listById)
-routes.post('/colaborador', ColaboradorController.create)
-routes.put('/colaborador/:id', ColaboradorController.update)
-routes.delete('/colaborador/:id', ColaboradorController.delete)
+routes.post('/colaborador', ColaboradorController.createNew)
+routes.put('/colaborador/:id', ColaboradorController.updateById)
+routes.delete('/colaborador/:id', ColaboradorController.deleteById)
 
 module.exports = routes
