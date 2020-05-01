@@ -7,5 +7,20 @@ services:
         restart: always
         ports:
             - 5432:5432
+        volumes:
+            - ./bkp/pg:/var/lib/postgresql/data
         environment:
             - POSTGRES_PASSWORD=postgres
+            - POSTGRES_DB=logistica
+            #- PGDATA=/var/lib/postgresql/data/pgdata
+
+    pgadmin:
+        image: dpage/pgadmin4
+        container_name: logistica-pgadmin
+        ports:
+            - 80:80
+        environment:
+            - PGADMIN_DEFAULT_EMAIL=postgres
+            - PGADMIN_DEFAULT_PASSWORD=postgres
+        links:
+            - db
