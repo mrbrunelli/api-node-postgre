@@ -48,7 +48,7 @@ module.exports = {
     },
 
     // Cadastrar colaborador
-    async create(req, res) {
+    async createNew(req, res) {
         const {
             nome,
             cpf,
@@ -82,7 +82,7 @@ module.exports = {
     },
 
     // Atualizar cadastro do colaborador
-    async update(req, res) {
+    async updateById(req, res) {
         const {
             nome,
             cpf,
@@ -118,7 +118,7 @@ module.exports = {
     },
 
     // Deletar colaborador, passando id por parâmetro
-    async delete(req, res, next) {
+    async deleteById(req, res, next) {
         try {
             const response = await db.query(`DELETE FROM colaborador WHERE idcolaborador = ${req.params.id}`)
 
