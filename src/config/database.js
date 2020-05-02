@@ -12,7 +12,7 @@ const pool = new Pool({
     host: 'localhost',
     user: 'postgres',
     password: 'postgres',
-    database: 'postgres',
+    database: 'logistica',
     port: 5432
 })
 
