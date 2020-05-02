@@ -55,6 +55,7 @@ module.exports = {
             email,
             idfilial
         } = req.body
+        
         try {
             const { rows } = await db.query(
                 "INSERT INTO colaborador (nome, cpf, email, idfilial) VALUES ($1, $2, $3, $4)",
