@@ -11,6 +11,8 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "moment": "^2.25.1",
+    "moment-timezone": "^0.5.28",
     "pg": "^8.0.3",
     "routes": "^2.1.0"
   }

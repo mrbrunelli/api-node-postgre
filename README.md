@@ -17,24 +17,24 @@ npm init
 
 2. Gerenciar as as rotas e requisições
 ```bash
-npm install express
+npm install express --save
 ```
 
 3. Instalar o módulo para ficar ouvindo alterações no documento e reiniciar servidor sozinho
 ```bash
 # A tag -g significa que a instalação é global
 # A tag -D significar que é uma dependência de desenvolvedor
-npm install -g -D nodemon
+npm install -g -D nodemon --save
 ```
 
 4. Instalar a dependência do PostgreSQL
 ```bash
-npm install --save pg
+npm install pg --save
 ```
 
 5. Instalar o CORS para limitar quem pode consumir nossa API
 ```bash
-npm install --save cors
+npm install cors --save
 ```
 
 ## Organização das pastas
@@ -63,7 +63,7 @@ const pool = new Pool({
     host: 'localhost',
     user: 'postgres',
     password: 'postgres',
-    database: 'postgres',
+    database: 'logistica',
     port: 5432
 })
 ```

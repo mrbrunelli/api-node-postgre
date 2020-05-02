@@ -6,6 +6,8 @@
  */
 
 const db = require('../config/database')
+//const moment = require('moment')
+//const timezone = require('moment-timezone')
 
 module.exports = {
     // Listar todas as férias
@@ -34,11 +36,13 @@ module.exports = {
             datafim
         } = req.body
 
-        //const dt = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })
+        // Vou usar o Current_Time_Stamp do banco
+        // const datainclusao = new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' })
+        // const datainclusao = moment().tz('America/Sao_Paulo')
 
         try {
-            await db.query("INSERT INTO ferias (idcolaborador, datainicio, datafim) VALUES ($1, $2, $3)",
-                [idcolaborador, datainicio, datafim]
+            await db.query("INSERT INTO ferias (idcolaborador, datainclusao, datainicio, datafim) VALUES ($1, $2, $3, $4)",
+                [idcolaborador, datainclusao, datainicio, datafim]
             )
 
             return res.json({
